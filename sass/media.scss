@@ -1,0 +1,17 @@
+@media (max-width: 1150px) {
+    .modal-search {
+        transform: translateX(155px);
+        width: 200px;
+
+        &.is-active{
+            transform: translateX(300px);
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    #container {
+        height: 400px;
+        width: 450px;
+    }
+}

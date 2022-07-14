@@ -1,0 +1,121 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F2F2F2;
+  color: #383840;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+body #container {
+  align-items: center;
+  background-color: #F2F2F2;
+  border: 1px solid rgba(161, 161, 161, 0.123);
+  border-radius: 10px;
+  box-shadow: 0.5px 0.2px 2px #8F8F8F;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  padding: 20px;
+  height: 400px;
+  width: 450px;
+  z-index: 4;
+}
+body #container .division {
+  background-color: #383840;
+  height: 2px;
+  width: 90%;
+}
+
+.box-img, .box-info-weather {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.box-img .weather-img, .box-info-weather .weather-img {
+  height: 150px;
+  width: 150px;
+}
+.box-img .day, .box-info-weather .day {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.box-img .climate, .box-info-weather .climate {
+  font-size: 3rem;
+  position: relative;
+}
+.box-img .climate::before, .box-info-weather .climate::before {
+  content: "°C";
+  font-size: 1rem;
+  position: absolute;
+  left: 60px;
+  top: 10px;
+}
+
+.modal-search {
+  align-items: center;
+  background-color: #F2F2F2;
+  color: #F2F2F2;
+  border: 1px solid rgba(161, 161, 161, 0.123);
+  border-radius: 10px;
+  box-shadow: 0.5px 0.2px 2px #8F8F8F;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #383840;
+  position: absolute;
+  height: 300px;
+  transform: translateX(80px);
+  transition: transform 0.5s ease-in-out;
+  width: 350px;
+  z-index: 1;
+}
+.modal-search.is-active {
+  transform: translateX(390px);
+}
+.modal-search > h5 {
+  font-size: 16px;
+}
+.modal-search #input-search {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #dadada;
+  width: 70%;
+  padding: 15px;
+  height: 10px;
+  outline: none;
+}
+.modal-search #btn-search {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  outline: none;
+  padding: 10px;
+}
+.modal-search #btn-search:hover {
+  opacity: 0.8;
+}
+.modal-search ion-icon {
+  font-size: 20px;
+  color: #F2F2F2;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

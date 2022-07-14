@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/media.css">
+    <title>Open Weather</title>
+</head>
+<body>
+    <main id="container">
+        <div class="box-img">
+            <img class="weather-img" src="../img/cloudy.png" alt="weather image">
+            <h3 class="weather-conditions">...</h3>
+        </div>
+        <span class="division"></span>
+        <div class="box-info-weather">
+            <h2 class="climate">22</h2>
+            <h3 class="city">...</h3>
+            <span class="day">...</span>
+        </div>
+    </main>
+    
+    <!--model search city-->
+    <div class="modal-search">
+        <ion-icon name="search-outline" onclick="showModal()"></ion-icon>
+        <h5>Clima na sua cidade</h5>
+        <input type="text" name="input-search" id="input-search" placeholder="digite sua cidade" required>
+        <button id="btn-search" type="button" onclick="searchCityClimate()">Search</button>
+    </div>
+    <!--loading-->
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="../js/script.js"></script>
+</html>
