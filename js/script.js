@@ -1,4 +1,6 @@
 const info = {
+    container: document.getElementById('container'),
+    body: document.querySelector('body'),
     wtConditions: document.querySelector('.weather-conditions'),
     wtImg: document.querySelector('.weather-img'),
     city: document.querySelector('.city'),
@@ -77,7 +79,6 @@ function searchCityClimate(){
 
 function showWeather(climate){
     console.log(climate)
-    let icon = climate.weather[0].icon;
     
     let temp = climate.main.temp;
     info.climate.innerText = Math.round(temp);
@@ -94,7 +95,34 @@ function showWeather(climate){
     let d = new Date();
     info.day.innerText= formatDate(d);
 
+    let h = d.getHours();
+    console.log(h);
+
+    setBackground(idImg, h);
+
 }
+
+function setBackground(cod, codb){
+    let background = "linear-gradient(to right, #ACD1F2, #F2F2F2)";
+    switch (cod){
+        case '01d' || '01n':
+            background = linearGradients.bg01;
+            break;
+        case '03d' || '03n' || '02d' || '02n': 
+            background = linearGradients.bg03;
+            break;
+        case '04d' || '04n': 
+            background = linearGradients.bg04;
+            info.body.style.setProperty('--color-mode','#fff');
+            break;
+    }
+
+    info.container.style.backgroundImage = background;
+
+    if(codb >= 18 || codb <= 6){
+        document.body.style.backgroundColor = "#D7D7D9";
+    }
+}    
 
 function formatDate(date){
     let dayAr = ["Domingo","Segunda", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sabado"];
@@ -110,10 +138,12 @@ function formatDate(date){
 }
 
 function showModal(){
-    let modal = info.modal.classList.contains('is-active');
-    if(modal == true){
-        info.modal.classList.remove('is-active');
-    } else {
-        info.modal.classList.add('is-active');
-    }
+    info.modal.classList.toggle('is-active');
+}
+
+const linearGradients = {
+    bg01: "linear-gradient(to top, #F2F2F2 1%, #F2D4AE 70%, #77ABD9)",
+    bg03: "linear-gradient(to top, #F2F2F2, #ACD1F2, #77ABD9)",
+    bg04: "linear-gradient(to top, #9FB0BF, #466C8C, #263640)",
+    
 }
