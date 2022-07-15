@@ -33,7 +33,7 @@ body #container {
   padding: 20px;
   height: 400px;
   width: 450px;
-  z-index: 4;
+  z-index: 5;
 }
 body #container .division {
   background-color: #383840;
@@ -77,14 +77,15 @@ body #container .division {
   box-shadow: 0.5px 0.2px 2px #8F8F8F;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
   background-color: #383840;
   position: absolute;
   height: 300px;
   transform: translateX(80px);
   transition: transform 0.5s ease-in-out;
   width: 350px;
-  z-index: 1;
+  z-index: 4;
 }
 .modal-search.is-active {
   transform: translateX(390px);
@@ -101,14 +102,76 @@ body #container .division {
   cursor: pointer;
 }
 
-#input-search {
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px #dadada;
+.close-modal-search {
+  background-color: transparent;
+  position: absolute;
+  display: none;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+.close-modal-search.is-active {
+  display: block;
+}
+
+.input-area {
+  position: relative;
   width: 70%;
   padding: 15px;
   height: 10px;
+}
+.input-area .label-search {
+  color: #383840;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.input-area #input-search {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #ACD1F2;
+  background-color: #F2F2F2;
+  width: 100%;
+  padding: 15px;
+  height: 10px;
   outline: none;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+.input-area #input-search:focus {
+  transform: scale(1.1);
+}
+.input-area #input-search:focus ~ .label-search, .input-area #input-search:valid ~ .label-search {
+  color: #F2F2F2;
+  top: -5px;
+  left: 20px;
+}
+
+#btn-search {
+  border: none;
+  border-radius: 1rem;
+  background-color: #F2F2F2;
+  box-shadow: 1px 1px 3px #ACD1F2;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 60px;
+}
+#btn-search:hover {
+  background-color: #383840;
+  transition: all 0.1s ease-in-out;
+}
+#btn-search ion-icon {
+  color: #383840;
+  font-size: 17px;
+  transition: all 0.1s ease-in-out;
+}
+#btn-search:hover ion-icon {
+  color: #77ABD9;
+  font-size: 25px;
 }
 
 /*# sourceMappingURL=style.css.map */

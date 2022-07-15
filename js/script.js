@@ -7,6 +7,7 @@ const info = {
     day: document.querySelector('.day'),
     climate: document.querySelector('.climate'),
     modal: document.querySelector('.modal-search'),
+    modalClose: document.querySelector('.close-modal-search'),
     inputSearch: document.getElementById('input-search')
 }
 
@@ -36,7 +37,7 @@ window.addEventListener('load', ()=>{
     }
 
     function errorPosition(err){
-        alert(err);
+        errorPosition(err.response.data.message);
     }
 });
 
@@ -47,13 +48,30 @@ function getWeather(lon, lat){
             alert('falha');
         } else {
             showWeather(res.data);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                title: 'Sucesso ao obter localização!'
+            })
         }
 
     }).catch((err)=>{
-        console.log(err);
+        errorPosition(err.response.data.message);
     });
 }
 
+/*researching the weather*/
 info.inputSearch.addEventListener('keypress', (event)=>{
     if(event.key == "Enter"){
         searchCityClimate();
@@ -73,13 +91,13 @@ function searchCityClimate(){
             info.inputSearch.value = "";
         }
     }).catch((err)=>{
-        console.log(err);
+        errorPosition(err.response.data.message);
     })
 }
 
+/*showing the weather*/
 function showWeather(climate){
-    console.log(climate)
-    
+
     let temp = climate.main.temp;
     info.climate.innerText = Math.round(temp);
     
@@ -92,16 +110,21 @@ function showWeather(climate){
     let idImg = climate.weather[0].icon;
     info.wtImg.src = `../img/${idImg}.png`;
 
-    let d = new Date();
-    info.day.innerText= formatDate(d);
+    let day = new Date();
+    info.day.innerText= formatDate(day);
 
-    let h = d.getHours();
-    console.log(h);
+    let hours = day.getHours();
+    console.log(hours);
 
-    setBackground(idImg, h);
-
+    setBackground(idImg, hours);
 }
 
+/*changing the background, according to the time*/
+const linearGradients = {
+    bg01: "linear-gradient(to top, #F2F2F2 1%, #F2D4AE 70%, #77ABD9)",
+    bg03: "linear-gradient(to top, #F2F2F2, #ACD1F2, #77ABD9)",
+    bg04: "linear-gradient(to top, #9FB0BF, #466C8C, #263640)",
+}
 function setBackground(cod, codb){
     let background = "linear-gradient(to right, #ACD1F2, #F2F2F2)";
     switch (cod){
@@ -120,10 +143,11 @@ function setBackground(cod, codb){
     info.container.style.backgroundImage = background;
 
     if(codb >= 18 || codb <= 6){
-        document.body.style.backgroundColor = "#D7D7D9";
+        document.body.style.backgroundColor = "#383840";
     }
 }    
 
+/*format date now*/
 function formatDate(date){
     let dayAr = ["Domingo","Segunda", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sabado"];
     let monthAr = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto"];
@@ -139,11 +163,20 @@ function formatDate(date){
 
 function showModal(){
     info.modal.classList.toggle('is-active');
+    info.modalClose.classList.toggle('is-active');
 }
 
-const linearGradients = {
-    bg01: "linear-gradient(to top, #F2F2F2 1%, #F2D4AE 70%, #77ABD9)",
-    bg03: "linear-gradient(to top, #F2F2F2, #ACD1F2, #77ABD9)",
-    bg04: "linear-gradient(to top, #9FB0BF, #466C8C, #263640)",
-    
+/*sweet alert*/
+function errorPosition(err){
+    return (
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Não foi possivel obter sua localização',
+            footer: `${err}`
+        })
+    )
 }
+
+
+

@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/media.css">
     <title>Open Weather</title>
 </head>
 <body>
@@ -25,21 +24,22 @@
     <!--model search city-->
     <div class="modal-search">
         <ion-icon name="search-outline" onclick="showModal()"></ion-icon>
-        <h5>Clima na sua cidade</h5>
-        <input type="text" name="input-search" id="input-search" placeholder="digite sua cidade" required>
+        <div class="input-area">
+            <input type="text" name="input-search" id="input-search" required>
+            <label for="input-search" class="label-search">sua cidade</label>
+        </div>
     
         <button id="btn-search" type="button" onclick="searchCityClimate()">
+            <span></span>
             <ion-icon name="cloud-outline"></ion-icon>
         </button>
-        
     </div>
-    <!--loading-->
-    <div class="loading">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+
+    <span class="close-modal-search" onclick="showModal()"></span>
+    
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
