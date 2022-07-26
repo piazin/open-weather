@@ -89,7 +89,7 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 30px;
-    background-color: #383840;
+    background-color: #181810;
     position: absolute;
     height: 300px;
     transform: translateX(80px);
@@ -181,7 +181,7 @@ body {
     width: 60px;
 
     &:hover {
-        background-color: $primary-text-color;
+        background-color: #161616;
         transition: all 0.1s ease-in-out;
     }
 

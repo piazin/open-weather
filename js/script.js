@@ -143,7 +143,7 @@ function setBackground(cod, codb){
     info.container.style.backgroundImage = background;
 
     if(codb >= 18 || codb <= 6){
-        document.body.style.backgroundColor = "#383840";
+        document.body.style.backgroundColor = "#161616";
     }
 }    
 
