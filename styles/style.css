@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   color: var(--color-mode);
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -22,7 +22,7 @@ body {
 }
 body #container {
   align-items: center;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   border: 1px solid rgba(161, 161, 161, 0.123);
   border-radius: 10px;
   box-shadow: 0.5px 0.2px 2px #383840;
@@ -41,26 +41,31 @@ body #container .division {
   width: 90%;
 }
 
-.box-img, .box-info-weather {
+.box-img,
+.box-info-weather {
   align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
 }
-.box-img .weather-img, .box-info-weather .weather-img {
+.box-img .weather-img,
+.box-info-weather .weather-img {
   height: 150px;
   width: 150px;
 }
-.box-img .day, .box-info-weather .day {
+.box-img .day,
+.box-info-weather .day {
   font-weight: 400;
   font-size: 0.8rem;
 }
-.box-img .climate, .box-info-weather .climate {
+.box-img .climate,
+.box-info-weather .climate {
   font-size: 3rem;
   position: relative;
 }
-.box-img .climate::before, .box-info-weather .climate::before {
+.box-img .climate::before,
+.box-info-weather .climate::before {
   content: "°C";
   font-size: 1rem;
   position: absolute;
@@ -70,11 +75,11 @@ body #container .division {
 
 .modal-search {
   align-items: center;
-  background-color: #F2F2F2;
-  color: #F2F2F2;
+  background-color: #f2f2f2;
+  color: #f2f2f2;
   border: 1px solid rgba(161, 161, 161, 0.123);
   border-radius: 10px;
-  box-shadow: 0.5px 0.2px 2px #8F8F8F;
+  box-shadow: 0.5px 0.2px 2px #8f8f8f;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,7 +100,7 @@ body #container .division {
 }
 .modal-search > ion-icon {
   font-size: 20px;
-  color: #F2F2F2;
+  color: #f2f2f2;
   position: absolute;
   top: 5px;
   right: 5px;
@@ -132,8 +137,8 @@ body #container .division {
 .input-area #input-search {
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px #ACD1F2;
-  background-color: #F2F2F2;
+  box-shadow: 1px 1px 3px #acd1f2;
+  background-color: #f2f2f2;
   width: 100%;
   padding: 15px;
   height: 10px;
@@ -145,7 +150,7 @@ body #container .division {
   transform: scale(1.1);
 }
 .input-area #input-search:focus ~ .label-search, .input-area #input-search:valid ~ .label-search {
-  color: #F2F2F2;
+  color: #f2f2f2;
   top: -5px;
   left: 20px;
 }
@@ -153,8 +158,8 @@ body #container .division {
 #btn-search {
   border: none;
   border-radius: 1rem;
-  background-color: #F2F2F2;
-  box-shadow: 1px 1px 3px #ACD1F2;
+  background-color: #f2f2f2;
+  box-shadow: 1px 1px 3px #acd1f2;
   cursor: pointer;
   outline: none;
   height: 40px;
@@ -170,8 +175,19 @@ body #container .division {
   transition: all 0.1s ease-in-out;
 }
 #btn-search:hover ion-icon {
-  color: #77ABD9;
+  color: #77abd9;
   font-size: 25px;
+}
+
+@media (max-width: 1200px) {
+  .modal-search {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  body #container {
+    width: 80%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
